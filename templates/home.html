@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename = 'styles/home.css') }}">
+    <title>Password Manager</title>
+</head>
+<body>
+    <div class="Menu" id="Menu">
+        <ul class="Menu" >
+            <button id="GenNewPassword">Generate New Password</button>
+            <button id="GetPs">Get Password</button>
+            <button id="AddNewPassword">Add new Password</button>
+            <button id="ChangeOrDelete">Change or delete</button>
+        </ul>
+    </div>
+    <div id="DivOpts"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'home.js') }}"></script>
+
+</body>
+</html>

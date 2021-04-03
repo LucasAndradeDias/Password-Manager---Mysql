@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+</head>
+<body>  
+    <h1>Password Manager </h1>
+    <p>For secure reasons insert Password Manager Pin code</p>
+    <input id="PinInput" type="text" placeholder="PIN">
+    <button id="EnterButton">Enter</button>
+    
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $(document.getElementById("EnterButton")).on("click", function(e){
+            e.preventDefault()
+            if (document.getElementById("PinInput").value != ""){
+                $.ajax({
+                    type:"POST",
+                    url: "/pin",
+                    contentType: "application/json",
+                    data: JSON.stringify({'pin':document.getElementById("PinInput").value}),
+                    success(data){
+                        if (data == "False"){
+                            console.log('não')
+                        }
+                        if (data == "True"){
+                            window.location = "/"
+                        }
+                    }
+                })
+            }
+        })
+        
+
+
+
+
+
+    </script>
+</body>
+</html>
