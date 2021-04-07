@@ -39,7 +39,7 @@ class SQl():
         host = k['mysql']['host']
         UserName = k['mysql']['UserName']
         Password = k['mysql']['Password']
-        self.Db = mysql.connector.connect(host=root,user=UserName,password=Password, database='passwords')
+        self.Db = mysql.connector.connect(host=host,user=UserName,password=Password,database='passwords')
         self.Cursor = self.Db.cursor(buffered=True)
     def NewPass(self,Site,Password):
         self.Cursor.execute("INSERT INTO Passwords(SiteApp,Password) VALUES(%s,%s)",(Site,Password)) 
