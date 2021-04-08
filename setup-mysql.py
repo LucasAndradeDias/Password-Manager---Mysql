@@ -60,7 +60,7 @@ class Mysql():
             return False
         else:
             try:
-                Db = mysql.connector.connect(host= host ,user= UserName ,password= Password ,database="teste2")
+                Db = mysql.connector.connect(host= host ,user= UserName ,password= Password ,database="passwords")
                 Cursor = Db.cursor(buffered=True)
                 Cursor.execute("CREATE TABLE Passwords(id INT PRIMARY KEY, SiteApp VARCHAR(200), Password VARCHAR(501))")
                 Db.commit()
