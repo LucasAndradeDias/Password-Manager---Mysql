@@ -42,23 +42,21 @@ class SQl():
         self.Db = mysql.connector.connect(host=host,user=UserName,password=Password,database='passwords')
         self.Cursor = self.Db.cursor(buffered=True)
     def NewPass(self,Site,Password):
-        self.Cursor.execute("INSERT INTO Passwords(SiteApp,Password) VALUES(%s,%s)",(Site,Password)) 
+        self.Cursor.execute(f"INSERT INTO passwords(SiteApp,Password) VALUES('{Site}','{Password}')") 
         self.Db.commit()
     def ChargePass(self,Site,Password):
-        self.Cursor.execute(f"UPDATE Passwords SET Password='{Password}' WHERE SiteApp='{Site}'")
+        self.Cursor.execute(f"UPDATE passwords SET Password='{Password}' WHERE SiteApp='{Site}'")
         self.Db.commit()
     def DeletePass(self,Site):
-        self.Cursor.execute(f"DELETE FROM Passwords WHERE SiteApp='{Site}'")
-        print('asda')
+        self.Cursor.execute(f"DELETE FROM passwords WHERE SiteApp='{Site}'")
         self.Db.commit()
     def getPass(self,Site):
-        self.Cursor.execute(f"SELECT Password FROM Passwords WHERE SiteApp='{Site}'")
+        self.Cursor.execute(f"SELECT Password FROM passwords WHERE SiteApp='{Site}'")
         res = self.Cursor.fetchone()
         if res == None:
             return False
         else:
             return res[0]
-
 ## ROUTES
 
 # Route Home
@@ -93,7 +91,7 @@ def NewPass():
         if request.is_json:
             try:
                 data = request.get_json()
-                if (SQl().getPass(data['siteapp'])) == False:
+                if SQl().getPass(data['siteapp']) == False:
                     if data['senhabsopt']  == False:
                         numbers = '0123456789'
                         words = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@!#$0123456789'
@@ -122,7 +120,6 @@ def NewPass():
                     return make_response(jsonify({'code':0,'error':2,'siteapp':data['siteapp']})) 
             except: 
                 return make_response(jsonify({'code':0,'error':1}))
-
 
 # Add Password
 
