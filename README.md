@@ -20,4 +20,13 @@ Pre requirements:
   -Python 3.5 or +
   -Mysql Server installed
  
- Enjoy
+How to use:
+  -After you have download the repositorie, run "Setup-Mysql.py" in terminal of your OS.
+  
+  -Every time you want to use Password Manager, run "init.py" in terminal of your OS and access the app 
+  searching for your localhost code(http://127.0.0.1:5000/) in any browser installed in your computer. 
+
+
+Thank you.
+
+Enjoy.
